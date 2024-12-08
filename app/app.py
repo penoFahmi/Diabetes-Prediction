@@ -4,13 +4,15 @@ import os
 import pickle
 
 
-# Memuat model dari file .pkl
+# Tentukan direktori untuk file model
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 model_path = os.path.join(BASE_DIR, "../models/best_xgb_model.pkl")
-# model = joblib.load(model_path)
-# model_path = "../models/best_xgb_model.pkl"  # Pastikan jalur ini sesuai
-with open(model_path, "rb") as file:
-    model = pickle.load(file)
+
+# Memuat model menggunakan joblib
+model = joblib.load(model_path)
+
+# Verifikasi model berhasil dimuat
+print("Model berhasil dimuat")
 
 
 
