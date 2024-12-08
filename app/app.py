@@ -1,8 +1,9 @@
 import streamlit as st
-import pickle
+import joblib
 import numpy as np
 import os
-import joblib
+import pickle
+
 
 # Memuat model dari file .pkl
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
