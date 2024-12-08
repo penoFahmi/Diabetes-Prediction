@@ -1,11 +1,16 @@
 import streamlit as st
 import pickle
 import numpy as np
+import os
+import joblib
 
 # Memuat model dari file .pkl
-model_path = "../models/best_xgb_model.pkl"  # Pastikan jalur ini sesuai
-with open(model_path, "rb") as file:
-    model = pickle.load(file)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(BASE_DIR, "../models/best_xgb_model.pkl")
+model = joblib.load(model_path)
+# model_path = "../models/best_xgb_model.pkl"  # Pastikan jalur ini sesuai
+# with open(model_path, "rb") as file:
+#     model = pickle.load(file)
 
 # Judul aplikasi
 st.title("Aplikasi Prediksi Diabetes")
