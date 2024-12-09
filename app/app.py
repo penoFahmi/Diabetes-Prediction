@@ -62,7 +62,6 @@
 #     except ValueError as e:
 #         st.error(f"Terjadi kesalahan: {e}")
 
-
 import streamlit as st
 import numpy as np
 import os
@@ -77,14 +76,14 @@ with open(model_path, "rb") as file:
     model = pickle.load(file)
 
 # Verifikasi model berhasil dimuat
-st.success("Model berhasil dimuat!")
+print("Model berhasil dimuat")
 
 # Judul aplikasi
-st.title("Aplikasi Prediksi Diabetes")
+st.title("Aplikasi Prediksi Risiko Diabetes")
 st.write("Masukkan data pasien untuk memprediksi kemungkinan diabetes.")
 
-# Input sesuai dengan fitur model
-medication_adherence = st.number_input("Kepatuhan Minum Obat (0-100%)", min_value=0.0, max_value=100.0, value=80.0)
+# Input fitur yang sesuai dengan model
+medication_adherence = st.number_input("Kepatuhan Minum Obat (%)", min_value=0.0, max_value=100.0, value=80.0)
 bmi = st.number_input("Indeks Massa Tubuh (BMI)", min_value=0.0, max_value=100.0, value=25.0)
 diet = st.number_input("Skor Pola Makan (0-100)", min_value=0.0, max_value=100.0, value=70.0)
 stress_level = st.number_input("Tingkat Stres (0-100)", min_value=0.0, max_value=100.0, value=50.0)
@@ -93,15 +92,15 @@ hydration_level = st.number_input("Tingkat Hidrasi (Liter/Hari)", min_value=0.0,
 blood_glucose = st.number_input("Kadar Glukosa Darah (mg/dL)", min_value=0.0, max_value=300.0, value=110.0)
 sleep_hours = st.number_input("Durasi Tidur (Jam/Hari)", min_value=0.0, max_value=24.0, value=7.0)
 weight = st.number_input("Berat Badan (kg)", min_value=0.0, max_value=300.0, value=70.0)
-height = st.number_input("Tinggi Badan (cm)", min_value=0.0, max_value=300.0, value=170.0)
 
-# Membuat array input untuk prediksi
+# Membuat array input untuk prediksi (sesuai dengan jumlah fitur model, yaitu 9)
 input_data = np.array([[medication_adherence, bmi, diet, stress_level, physical_activity,
-                        hydration_level, blood_glucose, sleep_hours, weight, height]])
+                        hydration_level, blood_glucose, sleep_hours, weight]])
 
 # Tombol untuk memulai prediksi
 if st.button("Prediksi"):
     try:
+        # Prediksi menggunakan model
         prediction = model.predict(input_data)
         result = "Diabetes Terdeteksi" if prediction[0] == 1 else "Tidak Ada Diabetes"
         st.success(f"Hasil Prediksi: {result}")
