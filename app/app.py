@@ -44,6 +44,22 @@ Aplikasi ini memprediksi **risk score diabetes** berdasarkan parameter kesehatan
 Masukkan data Anda untuk mendapatkan hasil prediksi.
 """)
 
+st.markdown("""
+### Apa itu Diabetes?
+Diabetes adalah kondisi kronis yang memengaruhi kemampuan tubuh untuk memproses glukosa darah. Beberapa faktor risiko meliputi:
+- **Gaya hidup sedentary:** Kurangnya aktivitas fisik.
+- **Pola makan yang buruk:** Tinggi gula, lemak jenuh, dan rendah serat.
+- **Riwayat keluarga:** Faktor genetik berperan penting.
+- **Stres kronis:** Dapat memengaruhi kadar gula darah.
+- **Kurang tidur:** Berkontribusi pada resistensi insulin.
+
+#### Pencegahan:
+- **Pola makan sehat:** Perbanyak buah, sayur, dan makanan berserat.
+- **Aktivitas fisik:** Lakukan olahraga setidaknya 30 menit setiap hari.
+- **Manajemen stres:** Hindari tekanan berlebihan dengan relaksasi.
+- **Cukup tidur:** Pastikan 7-9 jam tidur berkualitas setiap malam.
+""")
+
 # Input pengguna
 weight = st.number_input("Berat badan (kg)", min_value=30.0, max_value=200.0, value=70.0, step=0.1)
 height = st.number_input("Tinggi badan (cm)", min_value=100.0, max_value=250.0, value=170.0, step=0.1)
