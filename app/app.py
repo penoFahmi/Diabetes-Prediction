@@ -60,6 +60,10 @@ Diabetes adalah kondisi kronis yang memengaruhi kemampuan tubuh untuk memproses 
 - **Cukup tidur:** Pastikan 7-9 jam tidur berkualitas setiap malam.
 """)
 
+
+st.write("""
+**Prediksi persentase diabetes**
+""")
 # Input pengguna
 weight = st.number_input("Berat badan (kg)", min_value=30.0, max_value=200.0, value=70.0, step=0.1)
 height = st.number_input("Tinggi badan (cm)", min_value=100.0, max_value=250.0, value=170.0, step=0.1)
