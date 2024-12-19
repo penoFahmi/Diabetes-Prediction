@@ -84,3 +84,11 @@ if st.button("Prediksi"):
     
     # Hasil prediksi
     st.success(f"Risk Score Prediksi: {prediction:.2f}")
+
+
+# Survei feedback
+st.markdown("""
+### Berikan Feedback Anda
+Kami ingin mendengar pendapat Anda mengenai aplikasi ini! Silakan isi survei berikut untuk membantu kami meningkatkan layanan:
+[**Isi Survei**](https://forms.gle/81rTBpgtWzzoFfYS7)
+""")
