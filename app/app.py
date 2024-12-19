@@ -61,10 +61,17 @@ Diabetes adalah kondisi kronis yang memengaruhi kemampuan tubuh untuk memproses 
 """)
 
 
+# Penjelasan singkat tentang aplikasi
 st.write("""
-**Prediksi persentase diabetes**
+Aplikasi ini membantu Anda memprediksi **persentase risiko diabetes** berdasarkan data kesehatan yang dimasukkan. 
+Ikuti langkah-langkah di bawah ini untuk menggunakan aplikasi:
+1. Isi data kesehatan Anda seperti berat badan, tinggi badan, kadar glukosa, dan lainnya.
+2. Klik tombol **Prediksi** untuk melihat hasil.
+3. Hasil akan menampilkan persentase risiko diabetes berdasarkan data yang dimasukkan.
 """)
+
 # Input pengguna
+st.subheader("Silakan masukkan data kesehatan Anda:")
 weight = st.number_input("Berat badan (kg)", min_value=30.0, max_value=200.0, value=70.0, step=0.1)
 height = st.number_input("Tinggi badan (cm)", min_value=100.0, max_value=250.0, value=170.0, step=0.1)
 blood_glucose = st.number_input("Kadar glukosa darah", min_value=50.0, max_value=300.0, value=120.0, step=0.1)
