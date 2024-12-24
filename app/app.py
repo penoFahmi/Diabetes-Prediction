@@ -94,7 +94,7 @@ if st.button("Prediksi"):
     prediction = model.predict(input_data)[0]
     
     # Hasil prediksi
-    st.success(f"Risk Score Prediksi: {prediction:.2f}")
+    st.success(f"Risk Score Prediksi: {prediction:.2f} %")
 
 
 # Survei feedback
