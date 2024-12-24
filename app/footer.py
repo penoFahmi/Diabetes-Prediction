@@ -16,6 +16,6 @@ def show():
     }
     </style>
     <footer>
-        © 2024 Prediksi Risiko Diabetes | Dibuat dengan ❤️ oleh Tim Developer
+        © 2024 Prediksi Risiko Diabetes | CREATE by Peno & Ariel
     </footer>
     """, unsafe_allow_html=True)
