@@ -29,6 +29,6 @@ st.markdown("""
     }
     </style>
     <footer>
-        © 2024 Prediksi Risiko Diabetes | Dibuat dengan ❤️ oleh Tim Developer
+        © 2024 Prediksi Risiko Diabetes | Create by PENO & ARIEL
     </footer>
 """, unsafe_allow_html=True)
