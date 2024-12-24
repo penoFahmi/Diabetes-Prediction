@@ -118,44 +118,21 @@ import numpy as np
 import os
 import pickle
 
-# Tentukan direktori untuk file model
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 model_path = os.path.join(BASE_DIR, "../models/best_xgb_model.pkl")
 
-# Memuat model menggunakan pickle
+# Memuat model
 with open(model_path, "rb") as file:
     model = pickle.load(file)
 
-# Fungsi untuk setiap halaman
-def home_page():
-    st.title("🏠 Halaman Utama")
-    st.write("""
-    Selamat datang di aplikasi **Prediksi Risiko Diabetes**. 
-    Gunakan menu di sebelah kiri untuk bernavigasi ke berbagai fitur aplikasi.
-    """)
-
-def about_page():
-    st.title("ℹ️ Tentang Aplikasi")
-    st.write("""
-    Aplikasi ini dikembangkan untuk membantu pengguna memprediksi risiko diabetes berdasarkan data kesehatan mereka.
-    **Fitur utama**:
-    - Prediksi risiko diabetes berdasarkan berbagai parameter.
-    - Informasi pencegahan diabetes.
-    - Feedback untuk pengembangan aplikasi lebih lanjut.
-    
-    **Dibuat dengan**:
-    - Python
-    - Streamlit
-    """)
-
-def prediction_page():
+def show():
     st.title("🔍 Prediksi Risiko Diabetes")
-    
-    # Input pengguna
     st.subheader("📝 Masukkan Data Kesehatan Anda:")
+
+    # Input pengguna
     weight = st.number_input("Berat badan (kg)", min_value=30.0, max_value=200.0, value=70.0, step=0.1)
     height = st.number_input("Tinggi badan (cm)", min_value=100.0, max_value=250.0, value=170.0, step=0.1)
-    bmi = st.number_input("Indeks Massa Tubuh (BMI)", min_value=10.0, max_value=50.0, value=25.0, step=0.1)
+    bmi = st.number_input("BMI (Body Mass Index)", min_value=10.0, max_value=50.0, value=25.0, step=0.1)
     blood_glucose = st.number_input("Kadar glukosa darah (mg/dL)", min_value=50.0, max_value=300.0, value=120.0, step=0.1)
     physical_activity = st.slider("Aktivitas fisik (jam/hari)", min_value=0.0, max_value=24.0, value=1.0, step=0.1)
     diet = st.selectbox("Kepatuhan diet (1 = Ya, 0 = Tidak)", [1, 0])
@@ -163,34 +140,13 @@ def prediction_page():
     stress_level = st.slider("Tingkat stres (1 = Rendah, 2 = Sedang, 3 = Tinggi)", min_value=1, max_value=3, value=2)
     sleep_hours = st.number_input("Jam tidur (jam/hari)", min_value=0.0, max_value=24.0, value=7.0, step=0.1)
     hydration_level = st.selectbox("Hidrasi (1 = Cukup, 0 = Kurang)", [1, 0])
-    
+
     # Tombol prediksi
     if st.button("Prediksi"):
         input_data = np.array([[medication_adherence, bmi, diet, stress_level, physical_activity,
                                 hydration_level, blood_glucose, sleep_hours, weight]])
-        
-        # Prediksi menggunakan model
         prediction = model.predict(input_data)[0]
-        
-        # Hasil prediksi
         st.success(f"✨ Risk Score Prediksi: {prediction:.2f} %")
         st.write("""
-            **Catatan:** Hasil prediksi ini adalah estimasi berdasarkan data yang Anda masukkan.
-            Untuk diagnosis lebih lanjut, konsultasikan dengan profesional medis.
+        **Catatan:** Hasil prediksi adalah estimasi. Konsultasikan dengan profesional medis untuk informasi lebih lanjut.
         """)
-
-# Sidebar untuk navigasi
-st.sidebar.title("Navigasi")
-menu = st.sidebar.radio("Pilih Halaman", ["Halaman Utama", "Prediksi", "Tentang"])
-
-# Logika navigasi
-if menu == "Halaman Utama":
-    home_page()
-elif menu == "Prediksi":
-    prediction_page()
-elif menu == "Tentang":
-    about_page()
-
-# Footer
-st.sidebar.markdown("---")
-st.sidebar.write("© 2024 Prediksi Risiko Diabetes | Dibuat dengan ❤️ oleh Tim Developer")
