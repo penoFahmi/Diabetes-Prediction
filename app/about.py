@@ -17,7 +17,7 @@ def show():
     st.image("https://via.placeholder.com/800x400?text=Tim+Pengembang", use_column_width=True)
     st.write("""
     **Dikembangkan oleh:**
-    - Nama: John Doe
-    - Posisi: Data Scientist
-    - Email: john.doe@example.com
+    - Nama: Peno
+    - Posisi: Mahasiswa
+    - Email: penofahmi@gmail.com
     """)
