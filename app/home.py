@@ -1,9 +1,19 @@
 import streamlit as st
 from PIL import Image
+import os
 
-image = Image.open('img/output.png')
-image2 = Image.open('img/matrik.png')
-image3 = Image.open('img/xgboost.png')
+# Fungsi untuk memuat gambar
+def load_image(path):
+    if os.path.exists(path):
+        return Image.open(path)
+    else:
+        st.error(f"Gambar tidak ditemukan: {path}")
+        return None
+
+# Memuat gambar
+image = load_image('img/output.png')
+image2 = load_image('img/matrik.png')
+image3 = load_image('img/xgboost.png')
 
 def show():
     # Judul dan pengantar
@@ -16,7 +26,9 @@ def show():
         - Prediksi risiko berbasis model yang andal.
         - Rekomendasi tindakan pencegahan berdasarkan hasil analisis.
     """)
-    st.image(image, caption="Gambaran Visual Analisis Data", use_container_width=True)
+    
+    if image:
+        st.image(image, caption="Gambaran Visual Analisis Data", use_container_width=True)
 
     st.write("---")
 
@@ -26,8 +38,7 @@ def show():
         Klik tombol di bawah ini untuk langsung menuju halaman **Prediksi Risiko Diabetes**.
     """)
     if st.button("🔍 Ke Halaman Prediksi"):
-        # Gunakan query parameter untuk mengubah halaman
-        st.query_params(page="prediction.py")
+        st.session_state["page"] = "prediction"  # Menavigasi ke halaman prediksi saat tombol diklik
 
     st.write("---")
 
@@ -44,7 +55,8 @@ def show():
     col1, col2 = st.columns(2)
     with col1:
         st.subheader("📈 **Matrik Korelasi Variabel**")
-        st.image(image2, caption="Hubungan Antara Variabel", use_container_width=True)
+        if image2:
+            st.image(image2, caption="Hubungan Antara Variabel", use_container_width=True)
         st.markdown("""
         - **BMI** dan **berat badan** memiliki korelasi tinggi (0.87).
         - **Risiko diabetes** berkorelasi negatif dengan aktivitas fisik dan pola makan.
@@ -59,13 +71,15 @@ def show():
         - **Tingkat Aktivitas Fisik (physical_activity)**
         - **Indeks Massa Tubuh (BMI)**
         """)
-        st.image(image, caption="Distribusi Parameter Kesehatan", use_container_width=True)
+        if image:
+            st.image(image, caption="Distribusi Parameter Kesehatan", use_container_width=True)
 
     st.write("---")
 
     # Hasil prediksi
     st.subheader("🤖 **Hasil Prediksi dengan XGBoost**")
-    st.image(image3, caption="Hasil Prediksi: Hubungan Antara Nilai Aktual dan Prediksi", use_container_width=True)
+    if image3:
+        st.image(image3, caption="Hasil Prediksi: Hubungan Antara Nilai Aktual dan Prediksi", use_container_width=True)
     st.markdown("""
         **Model XGBoost** digunakan untuk memprediksi skor risiko diabetes dengan keakuratan tinggi. 
         Garis merah menunjukkan hubungan linear antara nilai aktual dan prediksi.
@@ -77,3 +91,4 @@ def show():
     **Disclaimer**: Aplikasi ini bukan pengganti konsultasi medis profesional. Harap konsultasikan dengan dokter 
     untuk diagnosis atau pengobatan yang lebih akurat.
     """)
+
