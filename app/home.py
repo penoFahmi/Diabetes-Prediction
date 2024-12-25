@@ -1,6 +1,7 @@
 import streamlit as st
 from PIL import Image
 import os
+from prediction import show as show_prediction
 
 # Fungsi untuk memuat gambar
 def load_image(path):
@@ -91,4 +92,3 @@ def show():
     **Disclaimer**: Aplikasi ini bukan pengganti konsultasi medis profesional. Harap konsultasikan dengan dokter 
     untuk diagnosis atau pengobatan yang lebih akurat.
     """)
-
