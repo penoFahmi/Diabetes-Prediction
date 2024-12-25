@@ -11,7 +11,7 @@ def show():
         - Prediksi risiko berbasis model yang andal.
         - Rekomendasi tindakan pencegahan berdasarkan hasil analisis.
     """)
-    st.image("../img/output.png", caption="Gambaran Visual Analisis Data", use_container_width=True)
+    st.image("img/output.png", caption="Gambaran Visual Analisis Data", use_container_width=True)
 
     st.write("---")
 
@@ -39,7 +39,7 @@ def show():
     col1, col2 = st.columns(2)
     with col1:
         st.subheader("📈 **Matrik Korelasi Variabel**")
-        st.image("../img/matrik.png", caption="Hubungan Antara Variabel", use_container_width=True)
+        st.image("img/matrik.png", caption="Hubungan Antara Variabel", use_container_width=True)
         st.markdown("""
         - **BMI** dan **berat badan** memiliki korelasi tinggi (0.87).
         - **Risiko diabetes** berkorelasi negatif dengan aktivitas fisik dan pola makan.
@@ -54,13 +54,13 @@ def show():
         - **Tingkat Aktivitas Fisik (physical_activity)**
         - **Indeks Massa Tubuh (BMI)**
         """)
-        st.image("../img/output.png", caption="Distribusi Parameter Kesehatan", use_container_width=True)
+        st.image("img/output.png", caption="Distribusi Parameter Kesehatan", use_container_width=True)
 
     st.write("---")
 
     # Hasil prediksi
     st.subheader("🤖 **Hasil Prediksi dengan XGBoost**")
-    st.image("../img/xgboost.png", caption="Hasil Prediksi: Hubungan Antara Nilai Aktual dan Prediksi", use_container_width=True)
+    st.image("img/xgboost.png", caption="Hasil Prediksi: Hubungan Antara Nilai Aktual dan Prediksi", use_container_width=True)
     st.markdown("""
         **Model XGBoost** digunakan untuk memprediksi skor risiko diabetes dengan keakuratan tinggi. 
         Garis merah menunjukkan hubungan linear antara nilai aktual dan prediksi.
