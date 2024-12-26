@@ -12,14 +12,9 @@ def load_image(path):
         return None
 
 # Memuat gambar
-image = load_image('static/img/output.png')
-image2 = load_image('static/img/matrik.png')
-image3 = load_image('static/img/xgboost.png')
-
-# image = load_image(os.path.join(os.getcwd(), 'img/output.png'))
-# image2 = load_image(os.path.join(os.getcwd(), 'img/matrik.png'))
-# image3 = load_image(os.path.join(os.getcwd(), 'img/xgboost.png'))
-
+image = load_image('img/output.png')
+image2 = load_image('img/matrik.png')
+image3 = load_image('img/xgboost.png')
 
 def show():
     # Judul dan pengantar
